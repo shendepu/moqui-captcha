@@ -42,3 +42,7 @@ to refresh captcha image.
 
 https://jcaptcha.atlassian.net/wiki/display/general/5+minutes+application+integration+tutorial 
 
+
+# License
+
+Moqui Captcha is [CC0-licensed](./LICENSE.md). we also provide an addition [copyright and patent grant](./AUTHORS) 
