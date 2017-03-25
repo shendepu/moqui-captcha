@@ -3,7 +3,7 @@ package com.moshi.impl.captcha
 import com.octo.captcha.service.CaptchaServiceException
 import com.octo.captcha.service.image.DefaultManageableImageCaptchaService
 import com.octo.captcha.service.image.ImageCaptchaService
-
+import org.moqui.context.ExecutionContext
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -16,9 +16,9 @@ class CaptchaServiceSingleton {
         return instance
     }
 
-    static boolean validateResponseForID(String captchaId, String response) {
+    static boolean validateResponseForID(ExecutionContext ec, String response) {
         boolean isResponseCorrect = false
-
+        String captchaId = ec.web.session.getId()
         try {
             isResponseCorrect = getInstance().validateResponseForID(captchaId, response)
         } catch (CaptchaServiceException e) {
