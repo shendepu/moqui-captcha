@@ -28,7 +28,7 @@ repositories {
     flatDir name: 'frameworkLib', dirs: frameworkDir.absolutePath + '/lib'
 //    flatDir name: 'localLib', dirs: projectDir.absolutePath + '/lib'
     jcenter()
-    maven { url "https://maven.atlassian.com/3rdparty/" }
+    maven { url "https://packages.atlassian.com/maven-3rdparty/" }
 }
 
 dependencies {
