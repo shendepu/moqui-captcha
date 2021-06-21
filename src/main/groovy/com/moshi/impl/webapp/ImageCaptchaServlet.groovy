@@ -2,8 +2,7 @@ package com.moshi.impl.webapp
 
 import com.moshi.impl.captcha.CaptchaServiceSingleton
 import com.octo.captcha.service.CaptchaServiceException
-import com.sun.image.codec.jpeg.JPEGCodec
-import com.sun.image.codec.jpeg.JPEGImageEncoder
+import javax.imageio.ImageIO
 
 import javax.servlet.ServletException
 import javax.servlet.ServletOutputStream
@@ -31,13 +30,9 @@ class ImageCaptchaServlet extends HttpServlet {
             String captchaId = httpServletRequest.getSession().getId()
             
             // call the ImageCaptchaService getChallenge method
-            BufferedImage challenge =
-                    CaptchaServiceSingleton.getInstance().getImageChallengeForID(captchaId,
-                            httpServletRequest.getLocale())
+            BufferedImage challenge = CaptchaServiceSingleton.getInstance().getImageChallengeForID(captchaId, httpServletRequest.getLocale())
 
-            // a jpeg encoder
-            JPEGImageEncoder jpegEncoder = JPEGCodec.createJPEGEncoder(jpegOutputStream)
-            jpegEncoder.encode(challenge)
+            ImageIO.write(challenge, 'jpeg' , jpegOutputStream );
         } catch (IllegalArgumentException e) {
             httpServletResponse.sendError(HttpServletResponse.SC_NOT_FOUND)
             return
